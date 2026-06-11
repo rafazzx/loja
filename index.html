@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lolly Pop Moda Feminina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rosa:    #F2306A;
+      --laranja: #FF7A35;
+      --rosa-claro: #FFE4EF;
+      --laranja-claro: #FFF0E6;
+      --creme:   #FFF8F5;
+      --escuro:  #1A0A14;
+      --cinza:   #6B5060;
+      --grad: linear-gradient(120deg, var(--rosa), var(--laranja));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--creme);
+      color: var(--escuro);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(255,248,245,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(242,48,106,0.12);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: .875rem; font-weight: 500;
+      color: var(--cinza); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--rosa); }
+    .nav-cta {
+      background: var(--grad); color: #fff;
+      border: none; border-radius: 50px;
+      padding: .55rem 1.4rem; font-size: .875rem; font-weight: 500;
+      cursor: pointer; text-decoration: none; transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 1.5rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: ''; position: absolute; border-radius: 50%; filter: blur(80px); opacity: .25;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 520px; height: 520px;
+      background: var(--rosa);
+      top: -120px; right: -120px;
+    }
+    .hero::after {
+      width: 400px; height: 400px;
+      background: var(--laranja);
+      bottom: -80px; left: -100px;
+    }
+    .hero-tag {
+      display: inline-block;
+      border: 1.5px solid var(--rosa);
+      color: var(--rosa); border-radius: 50px;
+      font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+      padding: .35rem 1rem; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.08; max-width: 780px;
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.05rem; color: var(--cinza);
+      max-width: 480px; line-height: 1.7; margin-bottom: 2.4rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      background: var(--grad); color: #fff;
+      padding: .9rem 2.2rem; border-radius: 50px;
+      font-size: 1rem; font-weight: 500; text-decoration: none;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 6px 28px rgba(242,48,106,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(242,48,106,.45); }
+    .btn-secondary {
+      border: 1.5px solid var(--rosa); color: var(--rosa);
+      padding: .9rem 2.2rem; border-radius: 50px;
+      font-size: 1rem; font-weight: 500; text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .btn-secondary:hover { background: var(--rosa-claro); }
+    .hero-rating {
+      margin-top: 3rem;
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .875rem; color: var(--cinza);
+    }
+    .meia-estrela {
+      display: inline-block;
+      color: var(--laranja);
+      clip-path: inset(0 50% 0 0);
+      vertical-align: top;
+    }
+
+    .stars { color: var(--laranja); font-size: 1rem; letter-spacing: 2px; }
+    .rating-num { font-weight: 700; color: var(--escuro); }
+
+    /* STRIP */
+    .strip {
+      background: var(--grad);
+      color: #fff; text-align: center;
+      padding: 1.1rem 1rem;
+      font-size: .9rem; letter-spacing: .04em;
+    }
+
+    /* SOBRE */
+    .sobre {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      max-width: 1100px; margin: 5rem auto; padding: 0 2rem;
+    }
+    .sobre-visual { position: relative; }
+    .sobre-card {
+      background: var(--grad);
+      border-radius: 24px;
+      aspect-ratio: 4/5;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* ícone de roupa sem fundo amarelo */
+    .sobre-card svg {
+      width: 120px; height: 120px; opacity: .9;
+    }
+    .sobre-badge {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      background: #fff; border-radius: 20px;
+      padding: 1.1rem 1.5rem;
+      box-shadow: 0 8px 32px rgba(242,48,106,.18);
+      text-align: center;
+    }
+    .sobre-badge strong {
+      display: block; font-size: 1.5rem;
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .sobre-badge span { font-size: .75rem; color: var(--cinza); }
+    .sobre-texto h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2; margin-bottom: 1.2rem;
+    }
+    .sobre-texto h2 span {
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .sobre-texto p { color: var(--cinza); line-height: 1.75; margin-bottom: 1rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+    .pill { border-radius: 50px; padding: .45rem 1.1rem; font-size: .8rem; font-weight: 500; }
+    .pill-rosa { background: var(--rosa-claro); color: var(--rosa); }
+    .pill-laranja { background: var(--laranja-claro); color: #c4500a; }
+
+    /* SERVIÇOS */
+    .servicos {
+      background: var(--escuro); color: #fff;
+      padding: 5rem 2rem; text-align: center;
+    }
+    .servicos h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 3rem;
+    }
+    .servicos h2 em { font-style: italic; color: var(--laranja); }
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem; max-width: 960px; margin: 0 auto;
+    }
+    .card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px; padding: 2rem 1.5rem; text-align: left;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: var(--rosa); transform: translateY(-4px); }
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .card h3 { font-size: 1rem; font-weight: 500; margin-bottom: .5rem; }
+    .card p { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.6; }
+
+    /* AVALIAÇÕES */
+    .avaliacoes {
+      padding: 5rem 0;
+      background: var(--creme);
+      overflow: hidden;
+    }
+    .avaliacoes-header {
+      text-align: center;
+      padding: 0 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .avaliacoes-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      margin-bottom: .5rem;
+    }
+    .avaliacoes-header h2 span {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .avaliacoes-header p { color: var(--cinza); font-size: .9rem; }
+    .stars-geral-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      justify-content: center;
+      margin-bottom: .3rem;
+    }
+    .avaliacoes-header .stars-geral {
+      font-size: 1.3rem; color: var(--laranja);
+      letter-spacing: 3px;
+    }
+    .stars-nota {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--laranja);
+      line-height: 1;
+    }
+    .stars-count {
+      font-size: .9rem;
+      color: var(--cinza);
+      line-height: 1;
+    }
+    .reviews-track {
+      display: flex;
+      gap: 1.2rem;
+      overflow-x: auto;
+      padding: .5rem 2rem 1.8rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      cursor: grab;
+    }
+    .reviews-track:active { cursor: grabbing; }
+    .reviews-track::-webkit-scrollbar { height: 6px; }
+    .reviews-track::-webkit-scrollbar-track { background: var(--rosa-claro); border-radius: 10px; }
+    .reviews-track::-webkit-scrollbar-thumb { background: var(--grad); border-radius: 10px; }
+    .review-card {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid rgba(242,48,106,.12);
+      box-shadow: 0 4px 20px rgba(242,48,106,.07);
+      display: flex; flex-direction: column; gap: .8rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .review-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(242,48,106,.14); }
+    .review-top { display: flex; align-items: center; gap: .75rem; }
+    .review-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; color: #fff; flex-shrink: 0;
+      background: var(--grad);
+    }
+    .review-info { flex: 1; min-width: 0; }
+    .review-nome { font-size: .875rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .review-meta { font-size: .72rem; color: var(--cinza); }
+    .review-stars { color: var(--laranja); font-size: .9rem; letter-spacing: 2px; }
+    .review-texto {
+      font-size: .85rem; color: #4a3040; line-height: 1.65; flex: 1;
+      display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .review-badge {
+      font-size: .7rem; color: var(--rosa); font-weight: 500;
+      background: var(--rosa-claro); border-radius: 20px;
+      padding: .2rem .7rem; align-self: flex-start;
+    }
+    .scroll-hint { text-align: center; margin-top: .2rem; font-size: .78rem; color: var(--cinza); opacity: .8; }
+
+    /* HORÁRIOS */
+    .horarios { max-width: 760px; margin: 5rem auto; padding: 0 2rem; }
+    .horarios h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      text-align: center; margin-bottom: 2.5rem;
+    }
+    .horarios h2 span {
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .tabela { width: 100%; border-collapse: collapse; }
+    .tabela tr { border-bottom: 1px solid rgba(242,48,106,.12); }
+    .tabela tr:last-child { border-bottom: none; }
+    .tabela td { padding: .9rem .5rem; font-size: .95rem; }
+    .tabela td:first-child { color: var(--cinza); text-transform: capitalize; }
+    .tabela td:last-child { text-align: right; font-weight: 500; }
+    .fechado { color: #c0a0ab !important; font-style: italic; }
+
+    /* CONTATO */
+    .contato {
+      background: var(--grad); color: #fff;
+      text-align: center; padding: 5rem 2rem;
+    }
+    .contato h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;
+    }
+    .contato p { font-size: 1rem; opacity: .88; margin-bottom: 2.5rem; line-height: 1.7; }
+    .contato-links { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .btn-white {
+      background: #fff; color: var(--rosa);
+      padding: .9rem 2rem; border-radius: 50px;
+      font-size: .95rem; font-weight: 600; text-decoration: none;
+      transition: transform .2s;
+    }
+    .btn-white:hover { transform: translateY(-2px); }
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,.7); color: #fff;
+      padding: .9rem 2rem; border-radius: 50px;
+      font-size: .95rem; font-weight: 500; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,.15); }
+
+    /* FOOTER */
+    footer {
+      background: var(--escuro); color: rgba(255,255,255,.45);
+      text-align: center; padding: 2rem 1rem; font-size: .8rem;
+    }
+    footer strong {
+      background: var(--grad); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* MOBILE */
+    @media(max-width:700px){
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .sobre { grid-template-columns: 1fr; }
+      .sobre-badge { right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo"><img src="images/logopop-removebg-preview.png"></span>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#avaliacoes">Avaliações</a></li>
+    <li><a href="#horarios">Horários</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="tel:11992000558" class="nav-cta">Ligar agora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">✦ Moda Feminina em Santo André</div>
+  <h1>Você merece se <em>sentir</em><br/>incrível todo dia</h1>
+  <p>Na Lolly Pop você encontra peças que combinam com quem você é — modernas, estilosas e para todos os momentos.</p>
+  <div class="hero-btns">
+    <a href="tel:11992000558" class="btn-primary">📞 Fale conosco</a>
+    <a href="#horarios" class="btn-secondary">Ver horários</a>
+  </div>
+  <div class="hero-rating">
+    <span class="stars">★★★★<span class="meia-estrela">★</span></span>
+    <span class="rating-num">4,5</span>
+    <span>· 582 avaliações no Google</span>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  🛍️ Retirada na loja &nbsp;·&nbsp; 🚚 Entrega disponível &nbsp;·&nbsp; 📍 R. Joaquim Távora, 330 — Vila Santa Teresa, Santo André
+</div>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="sobre-visual">
+    <div class="sobre-card">
+      <img src="images/Os queridinhos chegaram! ✨🤍Nosso tricô modal com gola listrada já está disponível na loja e pro.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:24px;display:block;"/>
+    </div>
+    <div class="sobre-badge">
+      <strong>582</strong>
+      <span>avaliações 5★</span>
+    </div>
+  </div>
+  <div class="sobre-texto">
+    <h2>Moda com <span>personalidade</span> e muito estilo</h2>
+    <p>A Lolly Pop nasceu para a mulher que quer se vestir bem sem abrir mão do conforto. Nossa curadoria traz peças modernas, versáteis e acessíveis para o dia a dia e para ocasiões especiais.</p>
+    <p>Localizada no coração de Santo André, somos referência em moda feminina na região — com quase 600 clientes satisfeitas que falam por nós.</p>
+    <div class="pills">
+      <span class="pill pill-rosa">Roupas do dia a dia</span>
+      <span class="pill pill-laranja">Ocasiões especiais</span>
+      <span class="pill pill-rosa">Looks completos</span>
+      <span class="pill pill-laranja">Tamanhos variados</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="servicos" id="servicos">
+  <h2>Por que escolher a <em>Lolly Pop?</em></h2>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🏪</div>
+      <h3>Retirada na loja</h3>
+      <p>Compre pelo WhatsApp e retire sem filas, com atendimento personalizado.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚚</div>
+      <h3>Entrega</h3>
+      <p>Receba suas peças no conforto de casa. Consulte as condições pelo telefone.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💅</div>
+      <h3>Consultoria de estilo</h3>
+      <p>Nossa equipe te ajuda a montar o look perfeito para cada ocasião.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⭐</div>
+      <h3>Qualidade garantida</h3>
+      <p>Peças selecionadas com cuidado para você se sentir confiante sempre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section class="avaliacoes" id="avaliacoes">
+  <div class="avaliacoes-header">
+    <h2>O que nossas <span>clientes dizem</span></h2>
+    <div class="stars-geral-wrap">
+      <div class="stars-geral">★★★★<span class="meia-estrela">★</span></div>
+      <span class="stars-nota">4,5</span>
+      <span class="stars-count">· 582 avaliações no Google</span>
+    </div>
+  </div>
+
+  <div class="reviews-track" id="reviewsTrack">
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">I</div>
+        <div class="review-info">
+          <div class="review-nome">Ivanilda Sapatieri</div>
+          <div class="review-meta">Local Guide · 14 avaliações · 2 semanas atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Quero deixar aqui meu elogio mais que especial para a Loja Lolly Pop Plus Size! Que lugar maravilhoso, tudo é feito com tanto cuidado e qualidade! O atendimento é simplesmente perfeito, as meninas são super atenciosas e nos ajudam em tudo.</p>
+      <span class="review-badge">✦ Novo</span>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">F</div>
+        <div class="review-info">
+          <div class="review-nome">Fran Murao</div>
+          <div class="review-meta">Local Guide · 64 avaliações · 6 meses atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Adoro esta loja! Toda vez que vou a Santo André SP tenho compromisso agendado para visitar e fazer minhas compras. Produtos de ótima qualidade.</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">E</div>
+        <div class="review-info">
+          <div class="review-nome">Elisangela Ferreira</div>
+          <div class="review-meta">4 avaliações · 5 meses atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Adoro essa loja! Um atendimento impecável, a proprietária está sempre presente e é uma querida! Super recomendo!</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">V</div>
+        <div class="review-info">
+          <div class="review-nome">VK</div>
+          <div class="review-meta">Local Guide · 62 avaliações · 2 meses atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Sempre muito bem atendida. Variedades de roupas e de qualidade. Ótima loja para encontrar presentes.</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">C</div>
+        <div class="review-info">
+          <div class="review-nome">Cristiane Araujo</div>
+          <div class="review-meta">Local Guide · 55 avaliações · 7 meses atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Gosto muito dessa loja! Sempre saio satisfeita e adoro o atendimento da Ju 💖</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">J</div>
+        <div class="review-info">
+          <div class="review-nome">Joana Costa</div>
+          <div class="review-meta">2 avaliações · um ano atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Gostei muito da loja — proposta de roupas lindas para trabalho e passeio. Sou de Santos e não havia encontrado uma loja que entendesse meu perfil. O diferencial foi o atendimento e a expertise da vendedora em ler muito bem o que eu precisava.</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">C</div>
+        <div class="review-info">
+          <div class="review-nome">Cristina Lenharo</div>
+          <div class="review-meta">Local Guide · 8 avaliações · uma semana atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Uma loja excelente com ótimas vendedoras.</p>
+      <span class="review-badge">✦ Novo</span>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">M</div>
+        <div class="review-info">
+          <div class="review-nome">Marli Correia</div>
+          <div class="review-meta">Local Guide · 64 avaliações · 6 meses atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Boas opções de roupas, com preços justos e bom atendimento.</p>
+    </div>
+    <div class="review-card">
+      <div class="review-top">
+        <div class="review-avatar">J</div>
+        <div class="review-info">
+          <div class="review-nome">José Dias</div>
+          <div class="review-meta">1 avaliação · um ano atrás</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-texto">Loja maravilhosa, sempre vou comprar presente para minha esposa e as meninas prontamente me ajudam nas escolhas. A loja plus além de variedades em modelos de roupas tem uma qualidade sem igual.</p>
+    </div>
+  </div>
+  <p class="scroll-hint">← arraste para ver mais avaliações →</p>
+</section>
+
+<!-- HORÁRIOS -->
+<section class="horarios" id="horarios">
+  <h2>Horários de <span>funcionamento</span></h2>
+  <table class="tabela">
+    <tr><td>Segunda-feira</td><td>10:00 - 19:00</td></tr>
+    <tr><td>Terça-feira</td><td>10:00 - 19:00</td></tr>
+    <tr><td>Quarta-feira</td><td>10:00 - 19:00</td></tr>
+    <tr><td>Quinta-feira</td><td>10:00 - 19:00</td></tr>
+    <tr><td>Sexta-feira</td><td>10:00 - 19:00</td></tr>
+    <tr><td>Sábado</td><td>09:30 - 18:00</td></tr>
+    <tr><td>Domingo</td><td class="fechado">Fechado</td></tr>
+  </table>
+</section>
+
+<!-- CONTATO -->
+<section class="contato" id="contato">
+  <h2>Venha nos visitar ✨</h2>
+  <p>Rua Joaquim Távora, 334
+Vila Assunção<br/>Santo André - SP, 09030-390</p>
+  <div class="contato-links">
+    <a href="tel:11992000558" class="btn-white">📞 (11) 99200-0558</a>
+    <a href="https://www.instagram.com/lollypopmodafeminina/" target="_blank" class="btn-outline-white">instagram da loja</a>
+    <a href="https://api.whatsapp.com/send/?phone=5511961572696&text&type=phone_number&app_absent=0&utm_source=ig" target="_blank" class="btn-outline-white">💬 WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 <strong>Lolly Pop Moda Feminina</strong> · Santo André, SP · Feito com 💖
+</footer>
+
+<script>
+  const track = document.getElementById('reviewsTrack');
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener('mousedown', e => {
+    isDown = true; track.style.cursor = 'grabbing';
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mouseup',    () => { isDown = false; track.style.cursor = 'grab'; });
+  track.addEventListener('mousemove',  e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.4;
+  });
+</script>
+
+</body>
+</html>
