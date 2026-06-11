@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Imagens - Loja</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .image-info {
+            padding: 15px;
+        }
+
+        .image-info p {
+            color: #666;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ Galeria de Produtos 🤍</h1>
+        
+        <div class="gallery">
+            <!-- Os queridinhos chegaram -->
+            <div class="image-card">
+                <img src="Os%20queridinhos%20chegaram!%20%E2%9C%A8%F0%9F%A4%8DNosso%20tric%C3%B4%20modal%20com%20gola%20listrada%20j%C3%A1%20est%C3%A1%20dispon%C3%ADvel%20na%20loja%20e%20pro.jpg" alt="Tricô Modal">
+                <div class="image-info">
+                    <p><strong>Tricô Modal com Gola Listrada</strong></p>
+                    <p>Nosso tric modal com gola listrada já está disponível na loja! 🤍</p>
+                </div>
+            </div>
+
+            <!-- Adicione mais imagens aqui -->
+        </div>
+    </div>
+</body>
+</html>
